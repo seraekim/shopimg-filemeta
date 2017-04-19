@@ -3,21 +3,44 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>kr.co.ccbrain.shopimg</groupId>
-	<artifactId>shopimg-filemeta</artifactId>
-	<version>0.1</version>
-	<packaging>jar</packaging>
-
-	<name>shopimg-filemeta</name>
-	<description>shopimg jar for insert filemeta</description>
-
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.5.2.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
+	
+	<!-- =========================================================== -->
+	<!--     Module Description                                      -->
+	<!-- =========================================================== -->
+	<groupId>kr.co.ccbrain.shopimg</groupId>
+	<artifactId>shopimg-filemeta</artifactId>
+	<version>0.1</version>
+	<packaging>jar</packaging>
+	<name>shopimg-filemeta</name>
+	
+	<description>
+		spring boot for jdbc-mybatis jar proejct, insertion of filemeta
+	</description>
 
+	<!-- =========================================================== -->
+	<!--     Developers and Contributors                             -->
+	<!-- =========================================================== -->
+	<developers>
+		<developer>
+			<name>Serae Kim</name>
+			<id>srkim</id>
+			<email>dkzksp0812@naver.com</email>
+			<roles>
+				<role>Java Developer</role>
+				<role>Module Maintainer</role>
+			</roles>
+		</developer>
+	</developers>
+  
+	<!-- =========================================================== -->
+	<!--     Dependency Management                                   -->
+	<!-- =========================================================== -->
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
