@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<Configuration>
+	<appender name="STD" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>
+				[%-5p] %d{yyyy-MM-dd hh:mm:ss.sss} %c.%M\(%F:%L\) %m%n%xEx
+			</Pattern>
+		</layout>
+	</appender>
+	<appender name="SIMPLE" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>
+				[%-5p] %d{yyyy-MM-dd hh:mm:ss.sss} %m%n%xEx
+			</Pattern>
+		</layout>
+	</appender>
+	<logger name="kr.co.ccbrain.shopimg.mapper" level="debug" additivity="false">
+		<appender-ref ref="SIMPLE" />
+	</logger>
+	<logger name="kr.co.ccbrain.shopimg" level="debug" additivity="false">
+		<appender-ref ref="STD" />
+	</logger>
+
+	<root level="warn">
+		<appender-ref ref="SIMPLE" />
+	</root>
+</Configuration>
