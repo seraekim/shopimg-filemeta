@@ -9,8 +9,8 @@ import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
 @ComponentScan(basePackages = "kr.co.ccbrain.shopimg")
-@PropertySource("config.properties")
-// @PropertySource("file:${shopimg.config}/config.properties")
+//@PropertySource("config.properties")
+@PropertySource("file:${shopimg.config}/config.properties")
 // -Dshopimg.config=dir
 @MapperScan(value = { "kr.co.ccbrain.shopimg.mapper" })
 public class ShopimgFilemetaApplication {

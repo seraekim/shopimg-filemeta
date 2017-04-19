@@ -8,7 +8,7 @@
 	<version>0.1</version>
 	<packaging>jar</packaging>
 
-	<name>shopimg_filemeta</name>
+	<name>shopimg-filemeta</name>
 	<description>shopimg jar for insert filemeta</description>
 
 	<parent>
@@ -44,7 +44,7 @@
 			<scope>test</scope>
 		</dependency>
 		<!-- spring boot end -->
-		
+
 		<!-- MySQL start -->
 		<dependency>
 			<groupId>mysql</groupId>
@@ -52,7 +52,7 @@
 			<scope>runtime</scope>
 		</dependency>
 		<!-- MySQL end -->
-		
+
 		<!-- MyBatis start -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
@@ -80,6 +80,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>${project.name}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
