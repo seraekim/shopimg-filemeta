@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xml>
 <Configuration>
-	<appender name="STD" class="ch.qos.logback.core.ConsoleAppender">
+	<appender name="CLICKABLE" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
 			<Pattern>
 				[%-5p] %d{yyyy-MM-dd hh:mm:ss.sss} %c.%M\(%F:%L\) %m%n%xEx
@@ -19,7 +19,7 @@
 		<appender-ref ref="SIMPLE" />
 	</logger>
 	<logger name="kr.co.ccbrain.shopimg" level="debug" additivity="false">
-		<appender-ref ref="STD" />
+		<appender-ref ref="CLICKABLE" />
 	</logger>
 
 	<root level="warn">
