@@ -28,4 +28,20 @@ public class MainService {
 	public String getLatestDir(Map param) throws Exception {
 		return mainMapper.selectLatestDir(param);
 	}
+	
+	public List<String> getCateId(Map param) throws Exception {
+		return mainMapper.selectCateId(param);
+	}
+	
+	public int initTbColResult(Map param) throws Exception {
+		return mainMapper.insertTbColResult(param);
+	}
+	
+	public int addTbErrFileInfo(Map param) throws Exception {
+		return mainMapper.insertTbErrFileInfo(param);
+	}
+	
+	public int updTbColResult(Map param) throws Exception {
+		return mainMapper.updateTbColResult(param);
+	}
 }

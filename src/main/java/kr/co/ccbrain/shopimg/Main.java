@@ -2,6 +2,7 @@ package kr.co.ccbrain.shopimg;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -27,42 +28,87 @@ public class Main {
 
 	public void init() {
 		logger.info(rootDir);
+		Map ss = null;
 		try {
 			List<Map> serviceList = mainService.getServiceInfo();
 			for (Map s : serviceList) {
+				ss = s;
 				listFilesForDir(s);
 			}
-			// listFilesForFolder(new File(rootDir));
-			// System.out.println(mainService.init());
 		} catch (Exception e) {
+			logger.error(ss.toString());
 			logger.error(e.getMessage(), e);
 		}
 
 	}
 
-	private void listFilesForDir(Map map) throws Exception {
+	private void listFilesForDir(Map param) throws Exception {
 
-		String dir = rootDir + "/" + map.get("colPath");
-		String latestDirOftb = mainService.getLatestDir(map);
+		String dir = rootDir + "/" + param.get("colPath");
+		String latestDirOftb = mainService.getLatestDir(param);
 		System.out.println("dir : " + latestDirOftb);
-		String id = (String) map.get("sId");
 		File[] list = new File(dir).listFiles();
 		if (list != null) {
 			for (File entry : list) {
 				if (entry.isDirectory()) {
 					String realSubDir = entry.getName();
-					System.out.println("realSubDir : "+realSubDir);
+					System.out.println("realSubDir : " + realSubDir);
 					if (isValidDir(realSubDir)) {
-						if(latestDirOftb == null ||Integer.parseInt(realSubDir) > Integer.parseInt(latestDirOftb)) {
-							File[] fs = new File(dir+"/"+realSubDir).listFiles();
-							for (File f : fs) {
-								String nm = f.getName();
-								System.out.println(nm);
+						if (latestDirOftb == null || Integer.parseInt(realSubDir) > Integer.parseInt(latestDirOftb)) {
+							List<String> cateIdList = mainService.getCateId(param);
+
+							String dd = realSubDir.substring(0, 8);
+							String hh = realSubDir.substring(8);
+							String rgSt = "2"; // 등록중
+							param.put("dd", dd);
+							param.put("hh", hh);
+							param.put("rgSt", rgSt);
+
+							// tb_col_result 등록중 상태 insert
+							mainService.initTbColResult(param);
+
+							// tb_err_file_info 파일 존재여부와 함께 insert
+							for (String cId : cateIdList) {
+								String prefix = cId + "." + realSubDir;
+								File browser = new File(dir + "/" + realSubDir + "/" + prefix + ".browser.jpg");
+								File html = new File(dir + "/" + realSubDir + "/" + prefix + ".html");
+								File win = new File(dir + "/" + realSubDir + "/" + prefix + ".win.jpg");
+
+								boolean isAllGood = true;
+
+								param.put("cId", cId);
+								if (!browser.isFile()) {
+									param.put("fk", "0");
+									param.put("fSt", "01");
+									isAllGood = false;
+									mainService.addTbErrFileInfo(param);
+								}
+								// throw new Exception();
+
+								if (!win.isFile()) {
+									param.put("fk", "1");
+									param.put("fSt", "01");
+									isAllGood = false;
+									mainService.addTbErrFileInfo(param);
+								}
+
+								if (!html.isFile()) {
+									param.put("fk", "2");
+									param.put("fSt", "01");
+									isAllGood = false;
+									mainService.addTbErrFileInfo(param);
+								}
+
+								// tb_col_result 파일 등록 상태 update
+								if (isAllGood) {
+									param.put("rgSt", "0");
+								} else {
+									param.put("rgSt", "9");
+								}
+								mainService.updTbColResult(param);
 							}
 						}
 					}
-				} else {
-					System.out.println("f : " + entry.getName());
 				}
 			}
 		}

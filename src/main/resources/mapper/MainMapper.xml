@@ -23,5 +23,39 @@
         ORDER  BY 1 DESC 
 	</select>
 
+	<select id="selectCateId" resultType="string">
+        SELECT category_id AS "cId" 
+        FROM   tb_category_info 
+        WHERE  service_id = #{sId}
+        ORDER  BY 1 
+	</select>
+	
+	<insert id="insertTbColResult">
+        INSERT INTO tb_col_result 
+        SELECT category_id, 
+               #{dd}, 
+               #{hh}, 
+               #{rgSt} 
+        FROM   tb_category_info 
+        WHERE  service_id = #{sId} 
+        ORDER  BY 1 
+	</insert>
+
+	<insert id="insertTbErrFileInfo">
+        INSERT INTO tb_err_file_info 
+        VALUES      (#{cId}, 
+                     #{dd}, 
+                     #{hh}, 
+                     #{fk}, 
+                     #{fSt}) 
+	</insert>
+	
+	<update id="updateTbColResult">
+        UPDATE tb_col_result 
+        SET    reg_status = #{rgSt} 
+        WHERE  category_id = #{cId} 
+               AND col_dd = #{dd} 
+               AND col_hh = #{hh} 
+	</update>
 </mapper>
 
