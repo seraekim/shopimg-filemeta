@@ -6,6 +6,22 @@
 	<select id="get" resultType="map">
 		select * from tb_col_result
 	</select>
+	
+	<select id="selectServiceInfo" resultType="map">
+		-- 서비스 테이블 조회
+        SELECT service_id   AS "sId", 
+               service_name AS "sNm", 
+               col_path     AS "colPath" 
+        FROM   tb_service_info 
+	</select>
+	
+	<select id="selectLatestDir" resultType="string">
+		-- 서비스별 삽입할 ddhh dir 유추
+		SELECT DISTINCT Concat(col_dd, col_hh) AS "dir" 
+        FROM   tb_col_result 
+        WHERE  category_id LIKE '${sId}%' 
+        ORDER  BY 1 DESC 
+	</select>
 
 </mapper>
 

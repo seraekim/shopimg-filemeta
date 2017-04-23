@@ -11,7 +11,7 @@ import org.springframework.context.annotation.PropertySource;
 @ComponentScan(basePackages = "kr.co.ccbrain.shopimg")
 //@PropertySource("config.properties")
 @PropertySource("file:${shopimg.config}/config.properties")
-// -Dshopimg.config=dir
+// -Dshopimg.config=rootDir
 @MapperScan(value = { "kr.co.ccbrain.shopimg.mapper" })
 public class ShopimgFilemetaApplication {
 

@@ -5,5 +5,7 @@ import java.util.Map;
 
 @SuppressWarnings("rawtypes")
 public interface MainMapper {
-	public List<Map> get();
+	List<Map> get();
+	List<Map> selectServiceInfo();
+	String selectLatestDir(Map param);
 }
