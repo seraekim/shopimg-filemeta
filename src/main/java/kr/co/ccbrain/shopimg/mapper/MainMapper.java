@@ -12,4 +12,6 @@ public interface MainMapper {
 	int insertTbColResult(Map param);
 	int insertTbErrFileInfo(Map param);
 	int updateTbColResult(Map param);
+	
+	int insertStaticTbColResult(Map param);
 }
