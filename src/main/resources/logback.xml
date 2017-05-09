@@ -4,14 +4,14 @@
 	<appender name="CLICKABLE" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
 			<Pattern>
-				[%-5p] %d{yyyy-MM-dd hh:mm:ss.sss} %c.%M\(%F:%L\) %m%n%xEx
+				[%-5p] %d{yyyy-MM-dd HH:mm:ss.sss} %c.%M\(%F:%L\) %m%n%xEx
 			</Pattern>
 		</encoder>
 	</appender>
 	<appender name="SIMPLE" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
 			<Pattern>
-				[%-5p] %d{yyyy-MM-dd hh:mm:ss.sss} %m%n%xEx
+				[%-5p] %d{yyyy-MM-dd HH:mm:ss.sss} %m%n%xEx
 			</Pattern>
 		</encoder>
 	</appender>
