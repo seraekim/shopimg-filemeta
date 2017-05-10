@@ -1,5 +1,8 @@
 package kr.co.ccbrain.shopimg;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,5 +22,14 @@ public class ShopimgFilemetaApplication {
 		ConfigurableApplicationContext ctx = SpringApplication.run(ShopimgFilemetaApplication.class, args);
 		Main mainObj = ctx.getBean(Main.class);
 		mainObj.init();
+//		try {
+//			mainObj.collectTargetTxt();
+//			mainObj.distinctServiceId();
+//			mainObj.printInsertCateId();
+//		} catch (FileNotFoundException e) {
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 	}
 }

@@ -44,4 +44,9 @@ public class MainService {
 	public int updTbColResult(Map param) throws Exception {
 		return mainMapper.updateTbColResult(param);
 	}
+	
+
+	public int initStaticTbColResult(Map param) throws Exception {
+		return mainMapper.insertStaticTbColResult(param);
+	}
 }

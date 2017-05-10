@@ -40,7 +40,9 @@
         WHERE  service_id = #{sId} 
         ORDER  BY 1 
 	</insert>
-
+	<insert id="insertStaticTbColResult">
+        INSERT INTO tb_col_result VALUES(#{cId}, #{dd}, #{hh}, #{rgSt})
+	</insert>
 	<insert id="insertTbErrFileInfo">
         INSERT INTO tb_err_file_info 
         VALUES      (#{cId}, 
